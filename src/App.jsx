@@ -6,15 +6,19 @@ import AllProducts from './sections/AllProducts'; // Assuming this is where AllP
 import ReviewSection from './sections/Review';
 import Footer from './sections/Footer';
 import Sidebar from './sections/Sidebar';
+import Product from './pages/Product';
+import MapComponent from './sections/Mapi';
 
 function App() {
   return (
     <Router>
       <div>
+        {/* <Product/> */}
         <Navbar />
         <Sidebar/>
         <Carousel />
         <AllProducts/>
+        <MapComponent/>
         <ReviewSection/>
         <Footer/>
         <Routes>
