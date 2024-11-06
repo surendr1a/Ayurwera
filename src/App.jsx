@@ -18,7 +18,7 @@ function App() {
         <Sidebar/>
         <Carousel />
         <AllProducts/>
-        <MapComponent/>
+        {/* <MapComponent/> */}
         <ReviewSection/>
         <Footer/>
         <Routes>
