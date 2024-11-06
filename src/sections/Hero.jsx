@@ -8,7 +8,7 @@ export default function Carousel() {
   const [progress, setProgress] = useState(0);
 
   const settings = {
-    dots: false,              
+    dots: false,
     infinite: true,
     speed: 3000,
     slidesToShow: 2.3,
@@ -19,6 +19,22 @@ export default function Carousel() {
       setActiveSlide(next);
       setProgress(0); // Reset progress to 0 when changing slides
     },
+    responsive: [
+      {
+        breakpoint: 1024, // for tablets and medium screens
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // for mobile screens
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -55,19 +71,19 @@ export default function Carousel() {
   };
 
   return (
-    <div className=" w-full max-w-5xl mx-auto mt-28 p-4 relative overflow-hidden mt-10">
+    <div className="w-full max-w-5xl mx-auto mt-28 p-4 relative overflow-hidden">
       <Slider {...settings}>
         <div className="p-4 transform transition-transform duration-500 hover:scale-105">
-          <img src="/Images/slides/1.jpeg" alt="Slide 1" className="w-[400px] h-[400px] rounded-2xl shadow-lg" />
+          <img src="/Images/slides/1.jpeg" alt="Slide 1" className="w-full h-[300px] md:h-[400px] rounded-2xl shadow-lg object-cover" />
         </div>
         <div className="p-4 transform transition-transform duration-500 hover:scale-105">
-          <img src="/Images/slides/2.jpeg" alt="Slide 2" className="w-[400px] h-[400px] rounded-2xl shadow-lg" />
+          <img src="/Images/slides/2.jpeg" alt="Slide 2" className="w-full h-[300px] md:h-[400px] rounded-2xl shadow-lg object-cover" />
         </div>
         <div className="p-4 transform transition-transform duration-500 hover:scale-105">
-          <img src="/Images/slides/3.jpeg" alt="Slide 3" className="w-[400px] h-[400px] rounded-2xl shadow-lg" />
+          <img src="/Images/slides/3.jpeg" alt="Slide 3" className="w-full h-[300px] md:h-[400px] rounded-2xl shadow-lg object-cover" />
         </div>
         <div className="p-4 transform transition-transform duration-500 hover:scale-105">
-          <img src="/Images/slides/4.jpeg" alt="Slide 4" className="w-[400px] h-[400px] rounded-2xl shadow-lg" />
+          <img src="/Images/slides/4.jpeg" alt="Slide 4" className="w-full h-[300px] md:h-[400px] rounded-2xl shadow-lg object-cover" />
         </div>
       </Slider>
       {renderCustomDots()}

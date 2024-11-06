@@ -1,5 +1,5 @@
 // src/components/Sidebar.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaHome,
@@ -12,12 +12,25 @@ import {
   FaAngleDown,
   FaAngleRight,
   FaSearch,
-  FaBars, // Importing the three-line (hamburger) icon
+  FaBars, // Hamburger icon for toggle
 } from 'react-icons/fa';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true); // Controls sidebar toggle
   const [expandSections, setExpandSections] = useState({ products: false, account: false }); // Control dropdowns
+  const [isMobile, setIsMobile] = useState(false); // To check if screen is mobile
+
+  // Check screen size for mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile breakpoint
+    };
+    
+    handleResize(); // Check screen size initially
+    window.addEventListener('resize', handleResize); // Update on resize
+    
+    return () => window.removeEventListener('resize', handleResize); // Cleanup on unmount
+  }, []);
 
   // Function to toggle sidebar
   const toggleSidebar = () => setIsOpen(!isOpen);
@@ -28,14 +41,18 @@ export default function Sidebar() {
   };
 
   return (
-    <div className={`bg-black text-white h-screen p-5 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed top-24 transition-all duration-300`}>
+    <div
+      className={`bg-black text-white h-screen p-5 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed top-24 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
+    >
       {/* Sidebar Toggle Button */}
-      <button
-        className="mb-6 text-lg text-gray-400 focus:outline-none"
-        onClick={toggleSidebar}
-      >
-        <FaBars /> {/* Hamburger icon for toggle */}
-      </button>
+      {isMobile && (
+        <button
+          className="mb-6 text-lg text-gray-400 focus:outline-none"
+          onClick={toggleSidebar}
+        >
+          <FaBars /> {/* Hamburger icon for toggle */}
+        </button>
+      )}
 
       {/* User Profile */}
       <div className="flex items-center mb-6">
