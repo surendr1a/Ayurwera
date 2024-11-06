@@ -1,0 +1,143 @@
+// src/components/Sidebar.js
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  FaHome,
+  FaUser,
+  FaBox,
+  FaShoppingCart,
+  FaHeart,
+  FaCog,
+  FaSignOutAlt,
+  FaAngleDown,
+  FaAngleRight,
+  FaSearch,
+  FaBars, // Importing the three-line (hamburger) icon
+} from 'react-icons/fa';
+
+export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(true); // Controls sidebar toggle
+  const [expandSections, setExpandSections] = useState({ products: false, account: false }); // Control dropdowns
+
+  // Function to toggle sidebar
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  // Function to toggle specific section
+  const toggleSection = (section) => {
+    setExpandSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
+
+  return (
+    <div className={`bg-black text-white h-screen p-5 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed top-24 transition-all duration-300`}>
+      {/* Sidebar Toggle Button */}
+      <button
+        className="mb-6 text-lg text-gray-400 focus:outline-none"
+        onClick={toggleSidebar}
+      >
+        <FaBars /> {/* Hamburger icon for toggle */}
+      </button>
+
+      {/* User Profile */}
+      <div className="flex items-center mb-6">
+        <div className="w-10 h-10 rounded-full bg-gray-500"></div>
+        {isOpen && (
+          <div className="ml-3">
+            <h2 className="text-sm font-semibold">John Doe</h2>
+            <p className="text-xs text-gray-400">surendra@gmail.com</p>
+          </div>
+        )}
+      </div>
+
+      {/* Search Bar */}
+      {isOpen && (
+        <div className="mb-6 relative">
+          <FaSearch className="absolute left-3 top-2 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-gray-700 w-full py-2 pl-10 pr-4 rounded focus:outline-none"
+          />
+        </div>
+      )}
+
+      {/* Menu Links */}
+      <ul className="space-y-4">
+        {/* Home Link */}
+        <li>
+          <Link to="/" className="flex items-center text-gray-200 hover:text-white">
+            <FaHome className="text-lg" />
+            {isOpen && <span className="ml-3">Home</span>}
+          </Link>
+        </li>
+
+        {/* Products Section with Submenu */}
+        <li>
+          <div
+            onClick={() => toggleSection('products')}
+            className="flex items-center justify-between text-gray-200 cursor-pointer hover:text-white"
+          >
+            <div className="flex items-center">
+              <FaBox className="text-lg" />
+              {isOpen && <span className="ml-3">Products</span>}
+            </div>
+            {isOpen && (expandSections.products ? <FaAngleDown /> : <FaAngleRight />)}
+          </div>
+          {expandSections.products && (
+            <ul className={`ml-6 mt-2 space-y-2 ${isOpen ? '' : 'hidden'}`}>
+              <li><Link to="/products/electronics" className="text-sm hover:text-white">Electronics</Link></li>
+              <li><Link to="/products/clothing" className="text-sm hover:text-white">Clothing</Link></li>
+              <li><Link to="/products/home" className="text-sm hover:text-white">Home & Living</Link></li>
+            </ul>
+          )}
+        </li>
+
+        {/* Account Section with Submenu */}
+        <li>
+          <div
+            onClick={() => toggleSection('account')}
+            className="flex items-center justify-between text-gray-200 cursor-pointer hover:text-white"
+          >
+            <div className="flex items-center">
+              <FaUser className="text-lg" />
+              {isOpen && <span className="ml-3">Account</span>}
+            </div>
+            {isOpen && (expandSections.account ? <FaAngleDown /> : <FaAngleRight />)}
+          </div>
+          {expandSections.account && (
+            <ul className={`ml-6 mt-2 space-y-2 ${isOpen ? '' : 'hidden'}`}>
+              <li><Link to="/account/profile" className="text-sm hover:text-white">Profile</Link></li>
+              <li><Link to="/account/orders" className="text-sm hover:text-white">Order History</Link></li>
+              <li><Link to="/account/wishlist" className="text-sm hover:text-white">Wishlist</Link></li>
+            </ul>
+          )}
+        </li>
+
+        {/* Additional Links */}
+        <li>
+          <Link to="/cart" className="flex items-center text-gray-200 hover:text-white">
+            <FaShoppingCart className="text-lg" />
+            {isOpen && <span className="ml-3">Cart</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/favorites" className="flex items-center text-gray-200 hover:text-white">
+            <FaHeart className="text-lg" />
+            {isOpen && <span className="ml-3">Favorites</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/settings" className="flex items-center text-gray-200 hover:text-white">
+            <FaCog className="text-lg" />
+            {isOpen && <span className="ml-3">Settings</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/logout" className="flex items-center text-gray-200 hover:text-white">
+            <FaSignOutAlt className="text-lg" />
+            {isOpen && <span className="ml-3">Logout</span>}
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
