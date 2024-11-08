@@ -88,23 +88,10 @@ export default function Sidebar() {
 
           {/* Products Section with Submenu */}
           <li>
-            <div
-              onClick={() => toggleSection('products')}
-              className="flex items-center justify-between text-gray-200 cursor-pointer hover:text-white"
-            >
-              <div className="flex items-center">
-                <FaBox className="text-lg" />
-                {isOpen && <span className="ml-3">Products</span>}
-              </div>
-              {isOpen && (expandSections.products ? <FaAngleDown /> : <FaAngleRight />)}
-            </div>
-            {expandSections.products && (
-              <ul className={`ml-6 mt-2 space-y-2 ${isOpen ? '' : 'hidden'}`}>
-                <li><Link to="/products/electronics" className="text-sm hover:text-white">Electronics</Link></li>
-                <li><Link to="/products/clothing" className="text-sm hover:text-white">Clothing</Link></li>
-                <li><Link to="/products/home" className="text-sm hover:text-white">Home & Living</Link></li>
-              </ul>
-            )}
+            <Link to="/products" className="flex items-center text-gray-200 hover:text-white">
+              <FaShoppingCart className="text-lg" />
+              {isOpen && <span className="ml-3">Products</span>}
+            </Link>
           </li>
 
           {/* Account Section with Submenu */}
