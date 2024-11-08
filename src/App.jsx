@@ -6,26 +6,27 @@ import AllProducts from './sections/AllProducts'; // Assuming this is where AllP
 import ReviewSection from './sections/Review';
 import Footer from './sections/Footer';
 import Sidebar from './sections/Sidebar';
-import Product from './pages/Product';
-// import MapComponent from './sections/Mapi';
+import ProductList from './sections/ProductList';
+import LoginPage from './pages/Login';
+import SignupPage from './pages/Signup';
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Product/> */}
         <Navbar />
+        <Sidebar />
         
-        <Sidebar/>
-        <Carousel />
-        <AllProducts/>
-        {/* <MapComponent/> */}
-        <ReviewSection/>
-        <Footer/>
         <Routes>
-        
+          <Route path="/" element={<Carousel />} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/signup" element={<SignupPage/>} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/all-products" element={<AllProducts />} />
+          <Route path="/reviews" element={<ReviewSection />} />
         </Routes>
         
+        <Footer />
       </div>
     </Router>
   );

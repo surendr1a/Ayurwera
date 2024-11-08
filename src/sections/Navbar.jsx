@@ -28,7 +28,7 @@ export default function Navbar() {
                 {/* Menu Items */}
                 <ul className={`flex-col md:flex-row md:flex ${isOpen ? 'flex' : 'hidden'} md:space-x-8 text-lg font-semibold text-green-600 md:mr-8`}>
                     <li className="relative group">
-                        <Link to="/" className="text-green-600 hover:text-[#2D6A4F] transition-colors duration-300">Home</Link>
+                        <Link to="/products" className="text-green-600 hover:text-[#2D6A4F] transition-colors duration-300">Home</Link>
                         <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-[#2D6A4F] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                     </li>
                     <li className="relative group">
