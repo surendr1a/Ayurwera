@@ -7,7 +7,7 @@ import ReviewSection from './sections/Review';
 import Footer from './sections/Footer';
 import Sidebar from './sections/Sidebar';
 import Product from './pages/Product';
-import MapComponent from './sections/Mapi';
+// import MapComponent from './sections/Mapi';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
       <div>
         {/* <Product/> */}
         <Navbar />
+        
         <Sidebar/>
         <Carousel />
         <AllProducts/>
