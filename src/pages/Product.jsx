@@ -62,7 +62,7 @@ export default function Product() {
       </div>
 
       <div className="justify-center flex my-4">
-        <Link to="/all-products">
+        <Link to="/products">
           <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
             See More
           </button>
