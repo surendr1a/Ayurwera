@@ -44,14 +44,14 @@ export default function Sidebar() {
     <>
       {/* Sidebar Toggle Button (Fixed on screen for visibility) */}
       <button
-  className="fixed top-36 left-3 z-50 text-lg text-gray-400 focus:outline-none md:top-6 md:left-6 lg:top-36 lg:left-6"
+  className="fixed top-36 left-3 z-50 text-2xl text-gray-400 focus:outline-none md:top-6 md:left-6 lg:top-7 lg:left-6"
   onClick={toggleSidebar}
 >
   <FaBars /> {/* Hamburger icon for toggle */}
 </button>
 
       <div
-        className={`bg-black text-white h-screen p-5 pt-16 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed md:top-32 top-32 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
+        className={`bg-black text-white h-screen p-5 pt-16 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed md:top-12 top-32 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
       >
         {/* User Profile */}
         <div className="flex items-center mb-6">

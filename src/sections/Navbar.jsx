@@ -27,7 +27,7 @@ export default function Navbar() {
             <nav className="flex justify-between items-center mx-4 transition-all duration-500 ease-in-out">
                 
                 {/* Dynamic Logo */}
-                <div className="flex items-center transition-all duration-500 ease-in-out">
+                <div className="flex items-center ml-12 transition-all duration-500 ease-in-out">
                     <a href="/">
                         <picture>
                             <source media="(max-width: 640px)" srcSet="" />
