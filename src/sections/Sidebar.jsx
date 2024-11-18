@@ -51,7 +51,7 @@ export default function Sidebar() {
 </button>
 
       <div
-        className={`bg-white text-black h-screen p-5 pt-16 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed md:top-12 top-32 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
+        className={`bg-white border-2 border-gray-200 text-black h-screen p-5 pt-16 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed md:top-12 top-32 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
       >
         {/* User Profile */}
         <div className="flex items-center mb-6 ">
