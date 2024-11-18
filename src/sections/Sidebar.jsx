@@ -51,10 +51,10 @@ export default function Sidebar() {
 </button>
 
       <div
-        className={`bg-black text-white h-screen p-5 pt-16 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed md:top-12 top-32 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
+        className={`bg-white text-black h-screen p-5 pt-16 z-40 ${isOpen ? 'w-64' : 'w-20'} fixed md:top-12 top-32 transition-all duration-300 ${isMobile && !isOpen ? 'hidden' : 'block'}`}
       >
         {/* User Profile */}
-        <div className="flex items-center mb-6">
+        <div className="flex items-center mb-6 ">
           <div className="w-10 h-10 rounded-full bg-gray-500"></div>
           {isOpen && (
             <div className="ml-3">
@@ -67,11 +67,11 @@ export default function Sidebar() {
         {/* Search Bar */}
         {isOpen && (
           <div className="mb-6 relative">
-            <FaSearch className="absolute left-3 top-2 text-gray-400" />
+            <FaSearch className="absolute left-3 top-4 text-black" />
             <input
               type="text"
               placeholder="Search..."
-              className="bg-gray-700 w-full py-2 pl-10 pr-4 rounded focus:outline-none"
+              className="bg-white border-black border-2 w-full py-2 pl-10 pr-4 rounded focus:outline-none"
             />
           </div>
         )}
@@ -80,7 +80,7 @@ export default function Sidebar() {
         <ul className="space-y-4">
           {/* Home Link */}
           <li>
-            <Link to="/" className="flex items-center text-gray-200 hover:text-white">
+            <Link to="/" className="flex items-center text-black hover:text-gray-700">
               <FaHome className="text-lg" />
               {isOpen && <span className="ml-3">Home</span>}
             </Link>
@@ -88,7 +88,7 @@ export default function Sidebar() {
 
           {/* Products Section with Submenu */}
           <li>
-            <Link to="/products" className="flex items-center text-gray-200 hover:text-white">
+            <Link to="/products" className="flex items-center text-black hover:text-gray-700">
               <FaShoppingCart className="text-lg" />
               {isOpen && <span className="ml-3">Products</span>}
             </Link>
@@ -98,7 +98,7 @@ export default function Sidebar() {
           <li>
             <div
               onClick={() => toggleSection('account')}
-              className="flex items-center justify-between text-gray-200 cursor-pointer hover:text-white"
+              className="flex items-center justify-between text-black cursor-pointer hover:text-gray-700"
             >
               <div className="flex items-center">
                 <FaUser className="text-lg" />
@@ -108,34 +108,34 @@ export default function Sidebar() {
             </div>
             {expandSections.account && (
               <ul className={`ml-6 mt-2 space-y-2 ${isOpen ? '' : 'hidden'}`}>
-                <li><Link to="/account/profile" className="text-sm hover:text-white">Profile</Link></li>
-                <li><Link to="/account/orders" className="text-sm hover:text-white">Order History</Link></li>
-                <li><Link to="/account/wishlist" className="text-sm hover:text-white">Wishlist</Link></li>
+                <li><Link to="/account/profile" className="text-sm hover:text-gray-700">Profile</Link></li>
+                <li><Link to="/account/orders" className="text-sm hover:text-gray-700">Order History</Link></li>
+                <li><Link to="/account/wishlist" className="text-sm hover:text-gray-700">Wishlist</Link></li>
               </ul>
             )}
           </li>
 
           {/* Additional Links */}
           <li>
-            <Link to="/cart" className="flex items-center text-gray-200 hover:text-white">
+            <Link to="/cart" className="flex items-center text-black hover:text-gray-700">
               <FaShoppingCart className="text-lg" />
               {isOpen && <span className="ml-3">Cart</span>}
             </Link>
           </li>
           <li>
-            <Link to="/favorites" className="flex items-center text-gray-200 hover:text-white">
+            <Link to="/favorites" className="flex items-center text-black hover:text-gray-700">
               <FaHeart className="text-lg" />
               {isOpen && <span className="ml-3">Favorites</span>}
             </Link>
           </li>
           <li>
-            <Link to="/settings" className="flex items-center text-gray-200 hover:text-white">
+            <Link to="/settings" className="flex items-center text-black hover:text-gray-700">
               <FaCog className="text-lg" />
               {isOpen && <span className="ml-3">Settings</span>}
             </Link>
           </li>
           <li>
-            <Link to="/logout" className="flex items-center text-gray-200 hover:text-white">
+            <Link to="/logout" className="flex items-center text-black hover:text-gray-700">
               <FaSignOutAlt className="text-lg" />
               {isOpen && <span className="ml-3">Logout</span>}
             </Link>
