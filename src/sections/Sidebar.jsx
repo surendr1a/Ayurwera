@@ -1,23 +1,22 @@
 // src/components/Sidebar.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { PiShoppingCartSimpleDuotone } from "react-icons/pi";
+import { AiOutlineLogin } from "react-icons/ai";
 import {
-  FaHome,
-  FaUser,
-  FaBox,
-  FaShoppingCart,
-  FaHeart,
-  FaCog,
-  FaSignOutAlt,
-  FaAngleDown,
-  FaAngleRight,
-  FaSearch,
+   FcHome,
+   FcShop,
+   FcContacts,
+   FcDataEncryption
+
+ } from "react-icons/fc"
+import {
+  
   FaBars, // Hamburger icon for toggle
 } from 'react-icons/fa';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true); // Controls sidebar toggle
-  const [expandSections, setExpandSections] = useState({ products: false, account: false }); // Control dropdowns
   const [isMobile, setIsMobile] = useState(false); // To check if screen is mobile
 
   // Check screen size for mobile
@@ -59,7 +58,7 @@ export default function Sidebar() {
           {/* Home Link */}
           <li>
             <Link to="/" className="flex items-center text-black hover:text-gray-700">
-              <FaHome className="text-lg" />
+            <FcHome className="text-lg" />
               {isOpen && <span className="ml-3">Home</span>}
             </Link>
           </li>
@@ -67,27 +66,34 @@ export default function Sidebar() {
           {/* Products Section with Submenu */}
           <li>
             <Link to="/products" className="flex items-center text-black hover:text-gray-700">
-              <FaShoppingCart className="text-lg" />
+            <FcShop className="text-lg" />
               {isOpen && <span className="ml-3">Products</span>}
             </Link>
           </li>
 
-          {/* Account Section with Submenu */}
+          {/* Order History Section with Submenu */}
           <li>
-            <Link to="/products" className="flex items-center text-black hover:text-gray-700">
-              <FaShoppingCart className="text-lg" />
+            <Link to="/orders" className="flex items-center text-black hover:text-gray-700">
+            <FcContacts className="text-lg" />
               {isOpen && <span className="ml-3">Order History</span>}
             </Link>
           </li>
 
-          {/* Additional Links */}
+          {/* Cart Additional Links */}
           <li>
             <Link to="/cart" className="flex items-center text-black hover:text-gray-700">
-              <FaShoppingCart className="text-lg" />
+            <PiShoppingCartSimpleDuotone className="text-lg text-green-600" />
               {isOpen && <span className="ml-3">Cart</span>}
             </Link>
           </li>
           
+          {/* Login Section */}
+          <li>
+            <Link to="/login" className="flex items-center text-black hover:text-gray-700">
+            <FcDataEncryption className="text-lg" />
+              {isOpen && <span className="ml-3">Login</span>}
+            </Link>
+          </li>
           
           <li>
            
