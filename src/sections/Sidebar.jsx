@@ -74,22 +74,10 @@ export default function Sidebar() {
 
           {/* Account Section with Submenu */}
           <li>
-            <div
-              onClick={() => toggleSection('account')}
-              className="flex items-center justify-between text-black cursor-pointer hover:text-gray-700"
-            >
-              <div className="flex items-center">
-                <FaUser className="text-lg" />
-                {isOpen && <span className="ml-3">Account</span>}
-              </div>
-              {isOpen && (expandSections.account ? <FaAngleDown /> : <FaAngleRight />)}
-            </div>
-            {expandSections.account && (
-              <ul className={`ml-6 mt-2 space-y-2 ${isOpen ? '' : 'hidden'}`}>
-                <li><Link to="/account/profile" className="text-sm hover:text-gray-700">Profile</Link></li>
-                <li><Link to="/account/orders" className="text-sm hover:text-gray-700">Order History</Link></li>
-              </ul>
-            )}
+            <Link to="/products" className="flex items-center text-black hover:text-gray-700">
+              <FaShoppingCart className="text-lg" />
+              {isOpen && <span className="ml-3">Order History</span>}
+            </Link>
           </li>
 
           {/* Additional Links */}
