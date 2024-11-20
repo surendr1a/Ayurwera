@@ -15,7 +15,7 @@ export default function Home() {
       <Carousel />
       <AllProducts />
       <ReviewSection />
-      <Footer/>
+    
     </div>
   );
 }
