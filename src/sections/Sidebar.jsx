@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PiShoppingCartSimpleDuotone } from "react-icons/pi";
-import { AiOutlineLogin } from "react-icons/ai";
 import {
    FcHome,
    FcShop,
