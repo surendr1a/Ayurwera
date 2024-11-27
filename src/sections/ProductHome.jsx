@@ -46,7 +46,7 @@ export default function AllProducts() {
           <div
             key={product.id}
             ref={(el) => (productRefs.current[index] = el)} // Add ref for animation
-            className="border p-4 rounded-lg shadow hover:scale-105 duration-500 hover:shadow-lg hover:bg-green-50 hover:shadow-2xl transition-all"
+            className="border p-4 rounded-lg shadow hover:scale-105 duration-500 hover:bg-green-50 hover:shadow-2xl transition-all"
           >
             <img
               src={product.image}
