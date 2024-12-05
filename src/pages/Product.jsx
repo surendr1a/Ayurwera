@@ -1,7 +1,7 @@
 // ProductList.js
 import React from 'react';
 import { productlist } from '../constants/index'; // Import your product list here
-import ProductCard from '../sections/ProductCard';
+import ProductCard from '../sections/ConsultantsCardforPage';
 import Sidebar from '../sections/Sidebar';
 
 const ProductList = () => {

@@ -64,9 +64,9 @@ export default function Sidebar() {
 
           {/* Products Section with Submenu */}
           <li>
-            <Link to="/products" className="flex items-center text-black hover:text-gray-700">
+            <Link to="/consultants" className="flex items-center text-black hover:text-gray-700">
             <FcShop className="text-lg" />
-              {isOpen && <span className="ml-3">Products</span>}
+              {isOpen && <span className="ml-3">Consultation</span>}
             </Link>
           </li>
 

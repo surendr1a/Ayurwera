@@ -1,116 +1,142 @@
 // constants/index.jsx
+// home page data of top consultants
 
-export const products = [
-    {
-      id: 1,
-      name: "Wireless Bluetooth Headphones",
-      description:
-        "High-quality wireless Bluetooth headphones with noise-canceling feature, deep bass, and up to 20 hours of battery life. Perfect for travel, work, and daily use.",
-      price: 59.99,
-      image: "/Images/products/1.jpeg",
-      category: "Electronics",
-      rating: 4.5,
-      stock: 25,
-      brand: "SoundBeat",
-      features: [
-        "Bluetooth 5.0",
-        "Noise Cancelling",
-        "20-hour Battery Life",
-        "Comfortable Fit",
-      ],
+export const topConsultants = [
+  {
+    id: 1,
+    profilePic: "https://randomuser.me/api/portraits/men/1.jpg",
+    username: "dr_ram123",
+    fullName: {
+      firstName: "Ram",
+      lastName: "Kumar",
     },
-    {
-      id: 2,
-      name: "Smart Fitness Watch",
-      description:
-        "Track your fitness levels with a sleek and lightweight smartwatch. Features heart rate monitoring, sleep tracking, and over 15 workout modes.",
-      price: 89.99,
-      image: "/Images/products/2.jpeg",
-      category: "Wearables",
-      rating: 4.3,
-      stock: 15,
-      brand: "FitPro",
-      features: [
-        "Heart Rate Monitor",
-        "Sleep Tracking",
-        "Water Resistant",
-        "Customizable Watch Faces",
-      ],
+    tags: ["Cardiologist", "Heart Specialist"],
+    experience: "10 years",
+    pricePerMinute: 25,
+    totalMinutesConsulted: 1200,
+  },
+  {
+    id: 2,
+    profilePic: "https://randomuser.me/api/portraits/women/2.jpg",
+    username: "dr_shreya007",
+    fullName: {
+      firstName: "Shreya",
+      lastName: "Sharma",
     },
-    {
-      id: 3,
-      name: "4K Action Camera",
-      description:
-        "Capture your adventures with this 4K action camera. Waterproof, durable, and perfect for outdoor sports, with high-definition video recording and image stabilization.",
-      price: 120.0,
-      image: "/Images/products/3.jpeg",
-      category: "Cameras",
-      rating: 4.7,
-      stock: 10,
-      brand: "GoExtreme",
-      features: [
-        "4K Video Recording",
-        "Image Stabilization",
-        "Waterproof up to 30m",
-        "Wide-Angle Lens",
-      ],
+    tags: ["Dermatologist", "Skin Specialist"],
+    experience: "8 years",
+    pricePerMinute: 55,
+    totalMinutesConsulted: 950,
+  },
+  {
+    id: 3,
+    profilePic: "https://randomuser.me/api/portraits/men/3.jpg",
+    username: "dr_arun_medico",
+    fullName: {
+      firstName: "Arun",
+      lastName: "Mehta",
     },
-    {
-      id: 4,
-      name: "Ergonomic Office Chair",
-      description:
-        "An ergonomic chair designed for ultimate comfort and posture support. Ideal for long hours of work or gaming, with adjustable height and lumbar support.",
-      price: 150.0,
-      image: "/Images/products/4.jpeg",
-      category: "Furniture",
-      rating: 4.6,
-      stock: 5,
-      brand: "ComfortSeat",
-      features: [
-        "Adjustable Height",
-        "Lumbar Support",
-        "Breathable Mesh Back",
-        "High-Density Foam Cushion",
-      ],
+    tags: ["Pediatrician", "Child Specialist"],
+    experience: "12 years",
+    pricePerMinute: 40,
+    totalMinutesConsulted: 1345,
+  },
+  {
+    id: 4,
+    profilePic: "https://randomuser.me/api/portraits/women/4.jpg",
+    username: "dr_rina_care",
+    fullName: {
+      firstName: "Rina",
+      lastName: "Gupta",
     },
-    {
-      id: 5,
-      name: "Portable Coffee Maker",
-      description:
-        "Enjoy fresh coffee anywhere with this portable coffee maker. Simple to use, lightweight, and compatible with ground coffee and coffee pods.",
-      price: 34.99,
-      image: "/Images/products/1.jpeg",
-      category: "Home Appliances",
-      rating: 4.4,
-      stock: 30,
-      brand: "BrewAnywhere",
-      features: [
-        "Lightweight Design",
-        "Easy to Clean",
-        "Compatible with Pods and Ground Coffee",
-        "Eco-Friendly",
-      ],
+    tags: ["Gynecologist", "Women's Health"],
+    experience: "15 years",
+    pricePerMinute: 60,
+    totalMinutesConsulted: 1800,
+  },
+  {
+    id: 5,
+    profilePic: "https://randomuser.me/api/portraits/men/5.jpg",
+    username: "dr_vivek_eye",
+    fullName: {
+      firstName: "Vivek",
+      lastName: "Joshi",
     },
-    {
-      id: 6,
-      name: "Wireless Charging Pad",
-      description:
-        "Quickly charge your phone wirelessly with this sleek and compact charging pad. Compatible with most Qi-enabled devices and perfect for home or office use.",
-      price: 19.99,
-      image: "/Images/products/3.jpeg",
-      category: "Accessories",
-      rating: 4.2,
-      stock: 40,
-      brand: "PowerUp",
-      features: [
-        "Fast Charging",
-        "Overheating Protection",
-        "Compact Design",
-        "LED Indicator",
-      ],
+    tags: ["Ophthalmologist", "Eye Specialist"],
+    experience: "7 years",
+    pricePerMinute: 30,
+    totalMinutesConsulted: 800,
+  },
+  {
+    id: 6,
+    profilePic: "https://randomuser.me/api/portraits/women/6.jpg",
+    username: "dr_preeti_smile",
+    fullName: {
+      firstName: "Preeti",
+      lastName: "Agarwal",
     },
-    // Add more products as needed
-  ];
+    tags: ["Dentist", "Oral Health"],
+    experience: "6 years",
+    pricePerMinute: 45,
+    totalMinutesConsulted: 720,
+  },
+  {
+    id: 7,
+    profilePic: "https://randomuser.me/api/portraits/men/7.jpg",
+    username: "dr_ashok_neuro",
+    fullName: {
+      firstName: "Ashok",
+      lastName: "Khandelwal",
+    },
+    tags: ["Neurologist", "Brain Specialist"],
+    experience: "20 years",
+    pricePerMinute: 100,
+    totalMinutesConsulted: 2500,
+  },
+  {
+    id: 8,
+    profilePic: "https://randomuser.me/api/portraits/women/8.jpg",
+    username: "dr_ankita_psy",
+    fullName: {
+      firstName: "Ankita",
+      lastName: "Malhotra",
+    },
+    tags: ["Psychologist", "Mental Health"],
+    experience: "5 years",
+    pricePerMinute: 50,
+    totalMinutesConsulted: 600,
+  },
+  {
+    id: 9,
+    profilePic: "https://randomuser.me/api/portraits/men/9.jpg",
+    username: "dr_siddharth_ortho",
+    fullName: {
+      firstName: "Siddharth",
+      lastName: "Rana",
+    },
+    tags: ["Orthopedist", "Bone Specialist"],
+    experience: "9 years",
+    pricePerMinute: 70,
+    totalMinutesConsulted: 1300,
+  },
+  {
+    id: 10,
+    profilePic: "https://randomuser.me/api/portraits/women/10.jpg",
+    username: "dr_meera_child",
+    fullName: {
+      firstName: "Meera",
+      lastName: "Verma",
+    },
+    tags: ["Pediatrician", "Child Specialist"],
+    experience: "11 years",
+    pricePerMinute: 65,
+    totalMinutesConsulted: 1500,
+  },
+];
+
+
+
+
 
 
 // reviews section data
