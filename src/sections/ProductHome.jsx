@@ -39,7 +39,7 @@ export default function AllProducts() {
   return (
     <div ref={sectionRef} className="max-w-6xl mx-auto p-4 sm:p-6 md:ml-0 lg:ml-[17%]">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-montserrat text-center mt-6 md:mt-10 mb-6 md:mb-8 text-shadow-md hover:text-shadow-xl">
-        All Products
+        Top Consultants
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {products.map((product, index) => (

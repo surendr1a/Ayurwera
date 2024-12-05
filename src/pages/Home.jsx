@@ -4,7 +4,6 @@ import Carousel from '../sections/Hero';
 import AllProducts from '../sections/ProductHome';
 import ReviewSection from '../sections/Review';
 import Navbar from '../sections/Navbar';
-import Footer from '../sections/Footer';
 import Sidebar from '../sections/Sidebar';
 
 export default function Home() {
