@@ -6,6 +6,7 @@ import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
 import Home from './pages/Home';
 import ConsultsList from './pages/Consults/Consultants';
+import ProfileSection from './pages/Profile';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/signup" element={<SignupPage/>} />
           <Route path="/consultants" element={<ConsultsList />} />
+          <Route path="/profile" element={<ProfileSection/>}/>
         </Routes>
         
         <Footer />

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { topConsultants } from "../constants"; // Import the topConsultants data
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -8,9 +8,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function TopConsultants() {
-  
   const sectionRef = useRef(null);
   const consultantRefs = useRef([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     // GSAP Timeline for consultant animations
@@ -37,6 +37,11 @@ export default function TopConsultants() {
     );
   }, []);
 
+  const handleCardClick = (consultantId) => {
+    // Navigate to the profile page and pass the consultantId as state
+    navigate("/profile", { state: { id: consultantId } });
+  };
+
   return (
     <div
       ref={sectionRef}
@@ -46,11 +51,12 @@ export default function TopConsultants() {
         Top Consultants
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        {topConsultants.slice(0,10).map((consultant, index) => (
+        {topConsultants.slice(0, 10).map((consultant, index) => (
           <div
             key={consultant.id}
             ref={(el) => (consultantRefs.current[index] = el)} // Add ref for animation
-            className="border p-4 rounded-lg shadow hover:scale-105 duration-500 bg-white transition-all"
+            className="border p-4 rounded-lg shadow hover:scale-105 duration-500 bg-white transition-all cursor-pointer"
+            onClick={() => handleCardClick(consultant.id)} // Add onClick event
           >
             <div className="flex items-center gap-4 mb-4">
               <img
