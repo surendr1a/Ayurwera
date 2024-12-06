@@ -8,6 +8,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function TopConsultants() {
+  
   const sectionRef = useRef(null);
   const consultantRefs = useRef([]);
 
@@ -45,7 +46,7 @@ export default function TopConsultants() {
         Top Consultants
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        {topConsultants.map((consultant, index) => (
+        {topConsultants.slice(0,10).map((consultant, index) => (
           <div
             key={consultant.id}
             ref={(el) => (consultantRefs.current[index] = el)} // Add ref for animation
