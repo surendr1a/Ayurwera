@@ -53,7 +53,7 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 z-50 w-full shadow-lg transition-all duration-500 ${
-                isScrolled ? "bg-white py-1" : "bg-white py-3"
+                isScrolled ? "bg-white py-3" : "bg-white py-3"
             }`}
         >
             <nav className="flex justify-between items-center mx-4">
@@ -64,7 +64,7 @@ export default function Navbar() {
                             src="/Images/logo.jpeg"
                             alt="Logo"
                             className={`transition-transform duration-500 ${
-                                isScrolled ? "scale-75" : "scale-100"
+                                isScrolled ? "scale-90" : "scale-100"
                             }`}
                             width="160"
                             height="160"
@@ -72,43 +72,37 @@ export default function Navbar() {
                     </a>
                 </div>
 
-                {/* Search Bar */}
-                <div
-                    className={`search-bar nav-animation hidden md:flex flex-grow items-center mx-4 ${
-                        isScrolled ? "ml-10" : "ml-20"
-                    }`}
-                >
-                    <div
-                        className={`flex items-center ${
-                            isScrolled ? "w-1/4" : "w-1/3"
-                        } px-4 py-2 border rounded-xl bg-slate-100`}
-                    >
-                        <FcSearch className="text-gray-500 mr-2 size-5" />
-                        <input
-                            type="text"
-                            placeholder="Try 'Search'"
-                            className="flex-grow bg-transparent focus:outline-none text-gray-700"
-                        />
-                    </div>
-                </div>
+            
+                
 
-                {/* Mobile Search Icon */}
-                <div className="md:hidden nav-animation mr-4">
-                    <button
-                        onClick={handleSearchClick}
-                        className="text-green-600 focus:outline-none"
-                    >
-                        <FcSearch size={isScrolled ? 24 : 30} />
-                    </button>
-                </div>
+                
 
                 {/* Home Section */}
-                <div className="nav-link nav-animation text-green-600 ml-4">
+                <div className="nav-link nav-animation text-blue-800 ml-4 flex space-x-4 justify-center">
                     <Link to="/">
                         <ul
-                            className="hover:text-[#2D6A4F] text-xl transition-transform duration-500"
+                            className="hover:text-[#5267ff] text-xl transition-transform duration-500"
                         >
-                            Home
+                            Find Doctors
+                        </ul>
+                    </Link>
+                    <Link to="/">
+                        <ul
+                            className="hover:text-[#5267ff] text-xl transition-transform duration-500"
+                        >
+                            Video Consult
+                        </ul>
+                    </Link><Link to="/">
+                        <ul
+                            className="hover:text-[#5267ff] text-xl transition-transform duration-500"
+                        >
+                           Medicines
+                        </ul>
+                    </Link><Link to="/">
+                        <ul
+                            className="hover:text-[#5267ff] text-xl transition-transform duration-500"
+                        >
+                            Lab Tests
                         </ul>
                     </Link>
                 </div>

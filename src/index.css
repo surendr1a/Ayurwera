@@ -1,5 +1,9 @@
+/* index.css */
+
+/* Tailwind imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
