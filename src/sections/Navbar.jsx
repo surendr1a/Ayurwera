@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import { FaUserCircle, FaSearch } from "react-icons/fa";
+import { FaUserCircle, FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";
 import { IoClose } from "react-icons/io5";
 
@@ -11,9 +11,14 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Navbar() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleSearchClick = () => {
         setIsSearchOpen(!isSearchOpen);
+    };
+
+    const handleMenuToggle = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
 
     useEffect(() => {
@@ -70,8 +75,22 @@ export default function Navbar() {
                     </a>
                 </div>
 
+                {/* Hamburger Menu for Small Devices */}
+                <div className="lg:hidden flex items-center">
+                    <button
+                        className="text-2xl text-gray-800 hover:text-blue-400 transition-colors duration-300"
+                        onClick={handleMenuToggle}
+                    >
+                        {isMenuOpen ? <FaTimes /> : <FaBars />}
+                    </button>
+                </div>
+
                 {/* Navigation Links */}
-                <div className="nav-links nav-animation flex space-x-8 text-lg font-medium">
+                <div
+                    className={`nav-links nav-animation lg:flex space-x-8 text-lg font-medium ${
+                        isMenuOpen ? "flex flex-col absolute top-16 left-0 w-full bg-white px-6 py-4 shadow-md" : "hidden"
+                    } lg:static lg:bg-transparent lg:shadow-none lg:flex-row lg:space-y-0 lg:w-auto lg:py-0`}
+                >
                     <Link
                         to="/"
                         className="hover:text-blue-400 transition-colors duration-300"
@@ -99,7 +118,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Profile and Search Icons */}
-                <div className="nav-icons nav-animation flex items-center space-x-6">
+                <div className="nav-icons nav-animation hidden lg:flex items-center space-x-6">
                     <FaSearch
                         className="text-xl cursor-pointer hover:text-blue-400 transition-colors duration-300"
                         onClick={handleSearchClick}
