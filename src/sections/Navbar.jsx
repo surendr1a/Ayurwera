@@ -51,7 +51,7 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 z-50 w-full shadow-md transition-all duration-500 ${
-                isScrolled ? "bg-blue-600 py-3 text-white" : "bg-white py-4 text-gray-800"
+                isScrolled ? "bg-blue-600 py-3 text-white shadow-white shadow-sm" : "bg-white py-4 text-gray-800"
             }`}
         >
             <nav className="flex justify-between items-center px-6 lg:px-16">
