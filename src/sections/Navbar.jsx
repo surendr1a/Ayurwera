@@ -51,7 +51,7 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 z-50 w-full shadow-md transition-all duration-500 ${
-                isScrolled ? "bg-blue-600 py-3 text-white shadow-white shadow-sm" : "bg-white py-4 text-gray-800"
+                isScrolled ? "bg-blue-600 py-3 text-white shadow-white shadow-sm " : "bg-white py-4 text-gray-800"
             }`}
         >
             <nav className="flex justify-between items-center px-6 lg:px-16">
@@ -62,7 +62,7 @@ export default function Navbar() {
                             src="/Images/logo.jpeg"
                             alt="Logo"
                             className={`transition-transform duration-500 ${
-                                isScrolled ? "scale-90 bg-white" : "scale-100"
+                                isScrolled ? "scale-90 bg-white rounded-xl p-2" : "scale-100"
                             }`}
                             width="120"
                             height="120"
