@@ -92,7 +92,7 @@ export default function Navbar() {
                     } lg:static lg:bg-transparent lg:shadow-none lg:flex-row lg:space-y-0 lg:w-auto lg:py-0`}
                 >
                     <Link
-                        to="/"
+                        to="/doctors"
                         className="hover:text-blue-400 transition-colors duration-300"
                     >
                         Find Doctors
