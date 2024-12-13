@@ -12,7 +12,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-blue-900 via-gray-800 to-gray-900 text-gray-300 py-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-16 grid grid-cols-1 md:grid-cols-5 gap-10">
         {/* Brand Section */}
         <div>
           <h2 className="text-3xl font-bold text-white mb-4">Ayurvera</h2>
@@ -79,28 +79,55 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Resources */}
+        {/* For Doctors */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4">Resources</h3>
+          <h3 className="text-xl font-semibold text-white mb-4">For Doctors</h3>
           <ul className="space-y-2 text-sm">
             <li>
               <a href="#" className="hover:text-blue-400 transition">
-                Help Center
+                Doctor Portal
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-blue-400 transition">
-                FAQs
+                Ayurvedic Resources
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-blue-400 transition">
-                Privacy Policy
+                Join Our Network
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-blue-400 transition">
-                Terms of Service
+                Partner With Us
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* For Patients */}
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-4">For Patients</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a href="#" className="hover:text-blue-400 transition">
+                Book a Consultation
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-blue-400 transition">
+                Health Guides
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-blue-400 transition">
+                Ayurvedic Diet Plans
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-blue-400 transition">
+                Contact a Specialist
               </a>
             </li>
           </ul>
