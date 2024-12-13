@@ -5,10 +5,8 @@ import Footer from './sections/Footer';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
 import Home from './pages/Home';
-import ConsultsList from './pages/Consults/Consultants';
 import ProfileSection from './pages/Profile';
-import ConsultantsSection from './pages/Consults/ConsultsCard';
-import Doctors from './sections/TopDoctors';
+import TopDoctors from './pages/Consults/Consultants';
 
 function App() {
   return (
@@ -21,7 +19,8 @@ function App() {
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/signup" element={<SignupPage/>} />
 
-         <Route path="/doctors" element={<Doctors/>} />
+        
+         <Route path="/doctors" element={<TopDoctors/>} />
         
           <Route path="/profile" element={<ProfileSection/>}/>
         </Routes>
