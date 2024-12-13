@@ -1,7 +1,9 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 const DoctorsList = () => {
+ 
   return [
     {
       name: 'Dr. Sarah Johnson',
@@ -38,8 +40,11 @@ const DoctorsList = () => {
   ];
 };
 
-const TopDoctors = () => {
+const Doctors = () => {
+  const navigate = useNavigate();
+
   const doctors = DoctorsList();
+
 
   return (
     <div className="py-16">
@@ -70,9 +75,16 @@ const TopDoctors = () => {
             </div>
           ))}
         </div>
+        <div className='flex justify-center mt-10 font-sans '>
+          <button className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700'
+          onClick={()=> navigate('/doctors')}
+          >
+            See More
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default TopDoctors;
+export default Doctors;
