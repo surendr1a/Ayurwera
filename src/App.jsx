@@ -9,6 +9,8 @@ import ProfileSection from './pages/Profile';
 import TopDoctors from './pages/Doctors_page';
 import ManageDoctors from './pages/ManageDoctors';
 import LabTests from './pages/LabTests';
+import Medicines from './pages/Medicines';
+import ChatConsults from './pages/ChatConsults';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/profile" element={<ProfileSection/>}/>
           <Route path="/manage-doctors" element={<ManageDoctors/>} />
           <Route path="/lab-tests" element={<LabTests/>} />
+          <Route path="/medicines" element={<Medicines/>} />
+          <Routes path="/chat-consults" element={<ChatConsults/> } />
         </Routes>
         
         <Footer />

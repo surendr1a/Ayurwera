@@ -96,8 +96,8 @@ export default function Navbar() {
           <Link to="/doctors" className="hover:text-blue-400 transition-colors duration-300">
             Find Doctors
           </Link>
-          <Link to="/video-consult" className="hover:text-blue-400 transition-colors duration-300">
-            Video Consult
+          <Link to="/chat-consults" className="hover:text-blue-400 transition-colors duration-300">
+            Chat Consult
           </Link>
           <Link to="/medicines" className="hover:text-blue-400 transition-colors duration-300">
             Medicines
