@@ -11,6 +11,7 @@ const ChatConsults = () => {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [isVideoCallActive, setIsVideoCallActive] = useState(false);
 
   const sendMessage = () => {
     if (!newMessage.trim()) return;
@@ -22,13 +23,19 @@ const ChatConsults = () => {
     }, 1000);
   };
 
+  const startVideoCall = () => {
+    setIsVideoCallActive(true);
+  };
+
+  const endVideoCall = () => {
+    setIsVideoCallActive(false);
+  };
+
   return (
     <div className="flex h-screen bg-gray-50 mt-16">
       {/* Left Panel: Doctors List */}
       <div className="w-1/3 bg-gray-100 p-6 overflow-y-auto">
         <h2 className="text-2xl font-bold mb-4">Find Your Doctor</h2>
-        
-        {/* Filters */}
         <div className="mb-4">
           <h3 className="text-lg font-semibold mb-2">Filters</h3>
           <select className="w-full p-2 border mb-2 rounded">
@@ -36,18 +43,7 @@ const ChatConsults = () => {
             <option value="Cardiologist">Cardiologist</option>
             <option value="Neurologist">Neurologist</option>
           </select>
-          <select className="w-full p-2 border mb-2 rounded">
-            <option value="">Rating</option>
-            <option value="4.5+">4.5+</option>
-            <option value="4.0+">4.0+</option>
-          </select>
-          <select className="w-full p-2 border mb-2 rounded">
-            <option value="">Fee Range</option>
-            <option value="300-500">₹300-₹500</option>
-          </select>
         </div>
-
-        {/* Doctors List */}
         <div className="space-y-4">
           {doctors.map((doctor) => (
             <div
@@ -62,7 +58,6 @@ const ChatConsults = () => {
                   <h4 className="text-lg font-bold">{doctor.name}</h4>
                   <p className="text-sm text-gray-500">{doctor.specialty}</p>
                   <p className="text-sm text-gray-500">Fee: ₹{doctor.fee}</p>
-                  <p className="text-sm text-gray-500">Experience: {doctor.experience} yrs</p>
                 </div>
                 <span className={`text-sm font-semibold ${doctor.available ? "text-green-500" : "text-red-500"}`}>
                   {doctor.available ? "Available" : "Offline"}
@@ -78,9 +73,17 @@ const ChatConsults = () => {
         {selectedDoctor ? (
           <>
             {/* Chat Header */}
-            <div className="p-4 border-b bg-white">
-              <h4 className="text-lg font-bold">{selectedDoctor.name}</h4>
-              <p className="text-sm text-gray-500">{selectedDoctor.specialty}</p>
+            <div className="p-4 border-b bg-white flex items-center justify-between">
+              <div>
+                <h4 className="text-lg font-bold">{selectedDoctor.name}</h4>
+                <p className="text-sm text-gray-500">{selectedDoctor.specialty}</p>
+              </div>
+              <button
+                onClick={startVideoCall}
+                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              >
+                Start Video Call
+              </button>
             </div>
 
             {/* Chat Messages */}
@@ -104,9 +107,6 @@ const ChatConsults = () => {
 
             {/* Chat Input */}
             <div className="p-4 bg-white flex items-center gap-2 border-t">
-              <button className="p-2 text-gray-600 hover:text-gray-800">
-                😊
-              </button>
               <input
                 type="text"
                 className="flex-1 p-2 border rounded"
@@ -122,6 +122,29 @@ const ChatConsults = () => {
         ) : (
           <div className="flex items-center justify-center flex-1 text-gray-400">
             Select a doctor to start chatting.
+          </div>
+        )}
+
+        {/* Video Call Modal */}
+        {isVideoCallActive && (
+          <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 flex items-center justify-center">
+            <div className="bg-white w-2/3 h-3/4 rounded-lg shadow-lg flex flex-col">
+              {/* Video Section */}
+              <div className="flex-1 bg-black rounded-t-lg relative">
+                <p className="absolute top-2 left-2 text-white text-lg">{selectedDoctor.name}</p>
+              </div>
+
+              {/* Controls */}
+              <div className="p-4 bg-gray-200 flex justify-between">
+                <button className="bg-red-500 text-white p-2 rounded hover:bg-red-600" onClick={endVideoCall}>
+                  End Call
+                </button>
+                <div className="flex gap-4">
+                  <button className="bg-gray-300 p-2 rounded hover:bg-gray-400">Mute</button>
+                  <button className="bg-gray-300 p-2 rounded hover:bg-gray-400">Turn Off Camera</button>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
