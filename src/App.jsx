@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import ProfileSection from './pages/Profile';
 import TopDoctors from './pages/Doctors_page';
 import ManageDoctors from './pages/ManageDoctors';
+import LabTests from './pages/LabTests';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
          <Route path="/doctors" element={<TopDoctors/>} />
           <Route path="/profile" element={<ProfileSection/>}/>
           <Route path="/manage-doctors" element={<ManageDoctors/>} />
+          <Route path="/lab-tests" element={<LabTests/>} />
         </Routes>
         
         <Footer />
