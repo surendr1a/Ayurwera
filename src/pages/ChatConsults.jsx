@@ -1,81 +1,125 @@
-import { useState, useEffect } from "react";
-import { io } from "socket.io-client"; // For real-time chat
+import React, { useState, useEffect } from "react";
 
+// Chat component to handle chat functionality
 const ChatConsults = () => {
+  const [chatHistory, setChatHistory] = useState([]);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-  const [socket, setSocket] = useState(null);
-  const [doctorAvailable, setDoctorAvailable] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [userDetails, setUserDetails] = useState({ name: "", symptoms: "" });
 
-  // Initialize socket
-  useEffect(() => {
-    const socket = io("your_backend_socket_url"); // Socket server URL
-    setSocket(socket);
-
-    socket.on("receive_message", (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
+  // Simulate sending and receiving messages
   const sendMessage = () => {
-    if (message) {
-      const msg = { sender: "user", text: message };
-      socket.emit("send_message", msg); // Send message to server
-      setMessages((prevMessages) => [...prevMessages, msg]);
+    if (message.trim()) {
+      const newMessage = {
+        text: message,
+        sender: "User",
+        timestamp: new Date().toLocaleTimeString(),
+      };
+      setChatHistory([...chatHistory, newMessage]);
       setMessage("");
+      setIsLoading(true);
+
+      // Simulate AI or Doctor response
+      setTimeout(() => {
+        const responseMessage = {
+          text: "Please describe your symptoms in detail so I can assist you better.",
+          sender: "Doctor",
+          timestamp: new Date().toLocaleTimeString(),
+        };
+        setChatHistory((prev) => [...prev, responseMessage]);
+        setIsLoading(false);
+      }, 1500);
     }
   };
 
-  const handleInputChange = (e) => {
-    setMessage(e.target.value);
+  const handleInputChange = (e) => setMessage(e.target.value);
+
+  const handleUserDetailsChange = (e) => {
+    const { name, value } = e.target;
+    setUserDetails((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleConsultationForm = (e) => {
+    e.preventDefault();
+    if (userDetails.name && userDetails.symptoms) {
+      // Proceed to start chat with user details
+      sendMessage();
+    } else {
+      alert("Please fill in your name and symptoms.");
+    }
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 bg-white shadow-md rounded-md">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold text-gray-800">Chat with Doctor</h2>
-        <button
-          className={`py-2 px-4 rounded-lg text-white ${doctorAvailable ? "bg-green-500" : "bg-red-500"}`}
-        >
-          {doctorAvailable ? "Doctor Available" : "Doctor Unavailable"}
-        </button>
-      </div>
+    <div className="p-6 bg-blue-50 min-h-screen mt-16">
+      <h2 className="text-2xl font-bold mb-6 text-blue-800 text-center">
+        Chat Consultation
+      </h2>
 
-      <div className="bg-gray-100 p-4 rounded-md h-80 overflow-y-scroll">
-        <div className="flex flex-col space-y-4">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-xs p-3 rounded-lg ${
-                  msg.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-800"
-                }`}
-              >
-                {msg.text}
-              </div>
-            </div>
-          ))}
+      {/* Pre-chat form */}
+      <form onSubmit={handleConsultationForm} className="mb-6">
+        <div className="flex gap-4 mb-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={userDetails.name}
+            onChange={handleUserDetailsChange}
+            className="w-1/2 p-3 rounded-lg border border-gray-300"
+            required
+          />
+          <input
+            type="text"
+            name="symptoms"
+            placeholder="Symptoms (e.g., Fever, Cough)"
+            value={userDetails.symptoms}
+            onChange={handleUserDetailsChange}
+            className="w-1/2 p-3 rounded-lg border border-gray-300"
+            required
+          />
         </div>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        >
+          Start Consultation
+        </button>
+      </form>
+
+      {/* Chat window */}
+      <div className="mb-6 h-80 overflow-y-auto p-4 bg-white border rounded-lg shadow-lg">
+        {chatHistory.map((chat, index) => (
+          <div key={index} className={`mb-4 ${chat.sender === "User" ? "text-right" : "text-left"}`}>
+            <p
+              className={`inline-block p-2 rounded-lg ${
+                chat.sender === "User"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {chat.text}
+            </p>
+            <span className="block text-sm text-gray-500">{chat.timestamp}</span>
+          </div>
+        ))}
+        {isLoading && (
+          <div className="text-center text-blue-500">
+            <p>Doctor is typing...</p>
+          </div>
+        )}
       </div>
 
-      <div className="mt-4 flex items-center space-x-4">
+      {/* Message input */}
+      <div className="flex gap-4">
         <input
           type="text"
+          placeholder="Type a message"
           value={message}
           onChange={handleInputChange}
-          placeholder="Type your message..."
-          className="flex-1 p-3 border rounded-lg focus:outline-none"
+          className="w-full p-3 rounded-lg border border-gray-300"
         />
         <button
           onClick={sendMessage}
-          className="py-2 px-4 bg-blue-500 text-white rounded-lg disabled:opacity-50"
-          disabled={!message}
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
         >
           Send
         </button>
