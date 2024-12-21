@@ -38,11 +38,11 @@ const LabTests = () => {
       </div>
 
       {/* Lab Tests List */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {filteredTests.map((test, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition"
+            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition border-gray-300 border-2"
           >
             <h3 className="text-lg font-semibold text-blue-700 mb-2">
               {test.name}
