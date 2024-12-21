@@ -14,7 +14,7 @@ const features = [
   },
   {
     icon: <Pill className="h-8 w-8 text-blue-600" />,
-    title: 'Order Medicines',
+    title: 'Order ',
     description: 'Get medicines delivered to your doorstep with attractive discounts',
   },
   {
