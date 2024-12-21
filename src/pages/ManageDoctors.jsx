@@ -33,7 +33,7 @@ const ManageDoctors = () => {
             {doctors.map((doctor, index) => (
               <tr
                 key={index}
-                className={`border-b border-gray-200 hover:bg-blue-50 ${
+                className={`border-b border-gray-200 hover:bg-blue-50  ${
                   index % 2 === 0 ? "bg-white" : "bg-blue-50"
                 }`}
               >

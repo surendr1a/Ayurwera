@@ -42,7 +42,7 @@ const LabTests = () => {
         {filteredTests.map((test, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition border-gray-300 border-2"
+            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition border-gray-150 border-2"
           >
             <h3 className="text-lg font-semibold text-blue-700 mb-2">
               {test.name}
