@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import AddNewDoctor from "./AddNewDoctor";
 
 const ManageDoctors = () => {
-  // Constant data for doctors
+  const [showAddDoctor, setShowAddDoctor] = useState(false);
+
   const doctors = [
     { name: "Pranayraj Chouhan", email: "pranaychouhan332@example.com", specialization: "Civil Engineering", experience: 6, verified: "Awaiting" },
     { name: "Pooja Bhatia", email: "pooja.bhatia@example.com", specialization: "Women's Health", experience: 14, verified: "Successful" },
@@ -11,12 +13,19 @@ const ManageDoctors = () => {
     { name: "Aadarsh Chauhan", email: "tesingaadarsh@example.com", specialization: "Human Body", experience: 1, verified: "Awaiting" },
     { name: "Arjun Gupta", email: "arjun.gupta@example.com", specialization: "Detoxification", experience: 15, verified: "Successful" },
     { name: "Ritika Patel", email: "ritika.patel@example.com", specialization: "Joint Pain Relief", experience: 6, verified: "Successful" },
-    // Add more doctors here...
   ];
 
   return (
-    <div className="p-6 bg-blue-50 min-h-screen">
-      <h2 className="text-2xl font-bold mb-6 text-blue-800 text-center mt-16">Manage Doctors</h2>
+    <div className="p-6 bg-blue-50 min-h-screen mt-16">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-blue-800">Manage Doctors</h2>
+        <button
+          onClick={() => setShowAddDoctor(true)}
+          className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+        >
+          Add New Doctor
+        </button>
+      </div>
       <div className="overflow-x-auto shadow-lg rounded-lg">
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
@@ -65,6 +74,7 @@ const ManageDoctors = () => {
           </tbody>
         </table>
       </div>
+      {showAddDoctor && <AddNewDoctor onClose={() => setShowAddDoctor(false)} />}
     </div>
   );
 };
