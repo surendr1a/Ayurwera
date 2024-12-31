@@ -1,7 +1,24 @@
 import React, { useState } from "react";
 import CameraCapture from "../sections/CameraCapture";
+import ProgressBar from "./Progress";
 
 const AddNewDoctor = ({ onClose }) => {
+
+
+  const specializations = {
+    BAMS: ["Kayachikitsa", "Panchakarma", "Shalya Tantra", "Dravyaguna"],
+    MBBS: ["General Medicine", "General Surgery", "Pediatrics", "Orthopedics"],
+    BDS: ["Oral Surgery", "Prosthodontics", "Orthodontics", "Endodontics"],
+    BHMS: ["Repertory", "Materia Medica", "Organon of Medicine"],
+    BPT: ["Neurology", "Orthopedics", "Cardio-Respiratory"],
+    MPT: ["Sports Physiotherapy", "Pediatrics", "Geriatrics"],
+    "MBBS MD": ["Cardiology", "Dermatology", "Neurology", "Oncology"],
+    "BAMS MD": ["Rasashastra", "Agad Tantra", "Swasthavritta"],
+  };
+
+  const [selectedQualification, setSelectedQualification] = useState("");
+const [selectedSpecialization, setSelectedSpecialization] = useState("");
+
   const [step, setStep] = useState(1);
   const [showCamera, setShowCamera] = useState(false);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
@@ -37,7 +54,9 @@ const AddNewDoctor = ({ onClose }) => {
         &times;
       </button>
       <div className="bg-white w-2/3 h-4/5 p-6 rounded border-slate-600 hover:shadow-sm hover:shadow-black shadow-lg overflow-y-auto">
-        <h2 className="text-2xl font-bold text-blue-600 mb-6">Add New Doctor</h2>
+        {/* <h2 className="text-2xl font-bold text-blue-600 mb-6">Add New Doctor</h2> */}
+        <ProgressBar currentStep={step} totalSteps={4} />
+
         <form>
           {step === 1 && (
             <div>
@@ -189,33 +208,63 @@ const AddNewDoctor = ({ onClose }) => {
             </div>
           )}
 
-          {step === 4 && (
-            <div>
-              <h3 className="text-lg font-semibold text-blue-500 mb-4">Step 4: Professional Details</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <input className={stepStyles} type="text" placeholder="Highest Qualification" required />
-                <input className={stepStyles} type="text" placeholder="Specialization" required />
-                <input className={stepStyles} type="text" placeholder="Medical License Number" required />
-                <input className={stepStyles} type="text" placeholder="Years of Experience" required />
-              </div>
-              <div className="mt-4">
-                <label className="block text-blue-600 mb-2">Upload Supporting Documents</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  className={`${stepStyles} w-full`}
-                  multiple
-                />
-                {/* <label className="block text-blue-600 mt-4 mb-2">Capture Supporting Documents (Camera)</label>
-                <button
-                  type="button"
-                  className="bg-gray-400 text-white py-2 px-4 rounded border-slate-600 hover:shadow-sm hover:shadow-black hover:bg-gray-500"
-                >
-                  Capture Photos
-                </button> */}
-              </div>
-            </div>
-          )}
+{step === 4 && (
+  <div>
+    <h3 className="text-lg font-semibold text-blue-500 mb-4">Step 4: Professional Details</h3>
+    <div className="grid grid-cols-2 gap-4">
+      {/* Dropdown for Highest Qualification */}
+      <select
+        className={stepStyles}
+        value={selectedQualification}
+        onChange={(e) => setSelectedQualification(e.target.value)}
+        required
+      >
+        <option value="" disabled>
+          Select Highest Qualification
+        </option>
+        <option value="BAMS">BAMS - Bachelor's of Ayurvedic Medicine and Surgery</option>
+        <option value="MBBS">MBBS - Bachelor of Medicine and Bachelor of Surgery</option>
+        <option value="BDS">BDS - Bachelor of Dental Surgery</option>
+        <option value="BHMS">BHMS - Bachelor of Homeopathic Medicine and Surgery</option>
+        <option value="BPT">BPT - Bachelor of Physiotherapy</option>
+        <option value="MPT">MPT - Master of Physiotherapy</option>
+        <option value="MBBS MD">MBBS MD - Doctor of Medicine after MBBS</option>
+        <option value="BAMS MD">BAMS MD - Doctor of Medicine after BAMS</option>
+      </select>
+
+      {/* Dropdown for Specialization */}
+      <select
+        className={stepStyles}
+        value={selectedSpecialization}
+        onChange={(e) => setSelectedSpecialization(e.target.value)}
+        required
+        disabled={!specializations[selectedQualification]}
+      >
+        <option value="" disabled>
+          Select Specialization
+        </option>
+        {specializations[selectedQualification]?.map((spec) => (
+          <option key={spec} value={spec}>
+            {spec}
+          </option>
+        ))}
+      </select>
+
+      <input className={stepStyles} type="text" placeholder="Medical License Number" required />
+      <input className={stepStyles} type="text" placeholder="Years of Experience" required />
+    </div>
+    <div className="mt-4">
+      <label className="block text-blue-600 mb-2">Upload Supporting Documents</label>
+      <input
+        type="file"
+        accept="image/*"
+        className={`${stepStyles} w-full`}
+        multiple
+      />
+    </div>
+  </div>
+)}
+
 
           <div className="flex justify-between mt-6">
             {step > 1 && (
